@@ -17,6 +17,9 @@ jobs:
         with:
           submodules: recursive
 
+      - name: List files (Diagnostic)
+        run: ls -R
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -31,8 +34,10 @@ jobs:
       - name: Build IPA
         run: |
           export PLATFORM='ios'
-          chmod +x ./build.sh
-          ./build.sh
+          # We are listing files above to find where build.sh is. 
+          # Once you verify the path in the logs, we will update this.
+          echo "Checking for build.sh..."
+          [ -f build.sh ] && echo "build.sh exists in root" || echo "build.sh NOT found in root"
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
