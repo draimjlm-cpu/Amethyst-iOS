@@ -23,9 +23,7 @@ jobs:
         run: brew install dpkg ldid
 
       - name: Build IPA
-        env:
-          PLATFORM: ios
-        run: make package
+        run: make package PLATFORM='ios'
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
