@@ -17,8 +17,8 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Find build.sh
-        run: find . -name "build.sh"
+      - name: Find Build Scripts
+        run: find . -name "*build*"
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -33,9 +33,7 @@ jobs:
 
       - name: Build IPA
         run: |
-          export PLATFORM='ios'
-          # We will update this line once the Find step gives us the path
-          echo "Waiting for path detection..."
+          echo "Waiting for correct build script..."
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
